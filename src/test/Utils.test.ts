@@ -2,6 +2,15 @@ import { Utils } from '../app/Utils';
 
 
 describe('Utils test suite', () => {
+
+    beforeAll(() => {
+        console.log('before all');
+    })
+
+    beforeEach(() => {
+        console.log('before each')
+    })
+
     it('should return a message on the console', () => {
         const msg = Utils.toUpperCase('ssw');
         expect(msg).toBe('SSW');
@@ -24,4 +33,27 @@ describe('Utils test suite', () => {
         expect(parsedUrl.query).toEqual(expectedQuery);
         expect(expectedQuery).toBe(expectedQuery);
     })
+
+    it('should test invalid URL', () => {
+        function expectError() {
+            Utils.parseUrl('')
+        }
+
+        expect(expectError).toThrow('Empty url');
+    });
+
+    it.only('should test invalid URL with arrow function', () => {
+        expect(() => {
+            Utils.parseUrl('')
+        }).toThrow('Empty url');
+    });
+
+    it.only('should test invalid URL with try catch', () => {
+        try {
+            Utils.parseUrl('');
+        } catch (error) {
+            expect(error).toBeInstanceOf(Error);
+            expect(error).toHaveProperty('message', 'Empty url');
+        }
+    });
 });
