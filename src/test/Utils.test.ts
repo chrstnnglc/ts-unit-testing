@@ -42,7 +42,7 @@ describe('Utils test suite', () => {
         expect(expectError).toThrow('Empty url');
     });
 
-    it.only('should test invalid URL with arrow function', () => {
+    it('should test invalid URL with arrow function', () => {
         expect(() => {
             Utils.parseUrl('')
         }).toThrow('Empty url');

@@ -1,6 +1,6 @@
 import { UrlWithParsedQuery, parse } from "url";
 
-
+/* istanbul ignore next */
 export class Utils {
 
     public static parseUrl(url: string): UrlWithParsedQuery {
@@ -9,7 +9,6 @@ export class Utils {
         }
         return parse(url, true);
     }
-
     public static toUpperCase(arg: string): string {
         return arg.toUpperCase();
     }
